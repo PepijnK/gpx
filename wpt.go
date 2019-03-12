@@ -34,9 +34,9 @@ type Elevation struct {
 	Valid bool
 }
 
-func (ele Elevation) MarshalXML(e *xml.Encoder, _ xml.StartElement) error {
+func (ele Elevation) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	if ele.Valid {
-		return e.Encode(ele.Val)
+		return e.EncodeElement(ele.Val, start)
 	}
 	return nil
 }
